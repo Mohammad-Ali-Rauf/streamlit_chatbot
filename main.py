@@ -11,7 +11,7 @@ def type_text(text: str, delay: float = 0.03):
             st.session_state.text = current_text  # Update the text
             st.write(current_text, unsafe_allow_html=True)  # Update and render
             time.sleep(delay)
-st.title("OpenAI Chatbot")
+st.title("Palm AI API Chatbot By Mohammad Ali | Student in PIAIC Quarter 2 Batch 46 Karachi ")
 
 genai.configure(api_key=st.secrets["api_key"])
 
