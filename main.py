@@ -11,7 +11,7 @@ def type_text(text: str, delay: float = 0.03):
             st.session_state.text = current_text  # Update the text
             st.write(current_text, unsafe_allow_html=True)  # Update and render
             time.sleep(delay)
-st.title("Palm AI API Chatbot By Mohammad Ali | Student in PIAIC Quarter 2 Batch 46 Karachi ")
+st.title("Palm AI API Chatbot By Mohammad Ali | Student in PIAIC Quarter 2 Batch 46 Karachi")
 
 genai.configure(api_key=st.secrets["api_key"])
 
@@ -40,8 +40,10 @@ if prompt := st.chat_input("Ask me about something"):
 
             display_model_name = st.session_state["gemini_model_name"]
 
+            model = genai.GenerativeModel('models/chat-bison-002')
+
             # Generate a response to the user prompt
-            response = genai.generate_content(model=display_model_name, prompt=prompt, temperature=0.1)
+            response = model.generate_content(prompt)
 
             # Check if the response object and 'last' attribute are present
             if response and hasattr(response, 'text') and response.text:
