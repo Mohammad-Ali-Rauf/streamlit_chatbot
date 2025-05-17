@@ -40,7 +40,7 @@ if prompt := st.chat_input("Ask me about something"):
 
             display_model_name = st.session_state["gemini_model_name"]
 
-            model = genai.GenerativeModel('models/chat-bison-002')
+            model = genai.GenerativeModel('models/chat-bison-001')
 
             # Generate a response to the user prompt
             response = model.generate_content(prompt)
