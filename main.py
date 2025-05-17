@@ -16,7 +16,7 @@ st.title("Palm AI API Chatbot By Mohammad Ali | Student in PIAIC Quarter 2 Batch
 genai.configure(api_key=st.secrets["api_key"])
 
 if "gemini_model_name" not in st.session_state:
-    st.session_state["gemini_model_name"] = "models/chat-bison-001"
+    st.session_state["gemini_model_name"] = "gemini-2.0-flash"
 
 if "messages" not in st.session_state:
     st.session_state.messages = []
@@ -40,7 +40,7 @@ if prompt := st.chat_input("Ask me about something"):
 
             display_model_name = st.session_state["gemini_model_name"]
 
-            model = genai.GenerativeModel('models/chat-bison-001')
+            model = genai.GenerativeModel('gemini-2.0-flash')
 
             # Generate a response to the user prompt
             response = model.generate_content(prompt)
