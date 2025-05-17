@@ -41,19 +41,19 @@ if prompt := st.chat_input("Ask me about something"):
             display_model_name = st.session_state["gemini_model_name"]
 
             # Generate a response to the user prompt
-            response = genai.chat(model=display_model_name, prompt=prompt, temperature=0.1)
+            response = genai.generate_content(model=display_model_name, prompt=prompt, temperature=0.1)
 
             # Check if the response object and 'last' attribute are present
-            if response and hasattr(response, 'last') and response.last:
+            if response and hasattr(response, 'text') and response.text:
                 # Stop the spinner
-                full_response = response.last
+                full_response = response.text
                 # Create an empty placeholder for dynamic content
                 response_placeholder = st.empty()
                 # Display the full response with typing animation
                 type_text(full_response)
             else:
                 # Handle the case where response is None or 'last' attribute is not present
-                full_response = "I'd like to inform you that, as an AI language model, I lack the ability to perform physical actions, access real-time data, execute code in external systems, or offer personal experiences or opinions. My expertise lies in processing and generating text, drawing insights from the data on which I've been trained. If you have any inquiries within these confines, please feel free to ask!"
+                full_response = "I'd like to inform you that, I lack the ability to perform physical actions, access real-time data, execute code in external systems, or offer personal experiences or opinions. My expertise lies in processing and generating text, drawing insights from the data on which I've been trained. If you have any inquiries within these confines, please feel free to ask!"
                 st.markdown(full_response)
 
         st.session_state.messages.append({"role": "assistant", "content": full_response})
